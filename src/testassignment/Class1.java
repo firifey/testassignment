@@ -5,9 +5,6 @@
  */
 package testassignment;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,7 +22,7 @@ public class Class1 extends Thread  {
     }
 	
 	public void run(){
-            System.out.println(new SimpleDateFormat("mmss").format(new Date())+ " S "+ threadname );
+            System.out.println("Signal come from "+ threadname);
             
             
         try {
@@ -34,16 +31,23 @@ public class Class1 extends Thread  {
             ex.printStackTrace();
         }
 		try {
-//                    System.out.print(new Timestamp(System.currentTimeMillis()) + " L N Y \n" );
-//                    System.out.println(" N Change to yellow in 6 sec:");
+                    System.out.println(" N Change to yellow in 6 sec:");
 			sleep(6000);
-                        trafficlight.changeYellow(threadname);
-//                    System.out.print(new Timestamp(System.currentTimeMillis()) + "L N R \n");
-//                    System.out.println(" N Change to Red in 6 sec:");
+                         trafficlight.changeYellow(threadname);
+                          System.out.println(" N Change to Red in 6 sec:");
 			sleep(6000);
 		} catch (InterruptedException ex) {
 			ex.printStackTrace();
-		} trafficlight.changeRed(threadname);
+		}
                 
+               
+                
+//		try {
+//                   
+//		} catch (InterruptedException ex) {
+//			ex.printStackTrace();
+//		}
+                trafficlight.changeRed(threadname);
+    
 }
 }
