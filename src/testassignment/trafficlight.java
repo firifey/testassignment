@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package testassignment;
 
-/**
- *
- * @author She
- */
+import com.sun.xml.internal.ws.api.ha.StickyFeature;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 public class trafficlight {
 	
         boolean green = true;
@@ -17,17 +13,19 @@ public class trafficlight {
             if (green = true){
                 wait();
                 }
-		System.out.println(name+" change to green");
+            System.out.print(new SimpleDateFormat("mmss").format(new Date()) + " L " + name + " G \n");
+//            System.out.println(name+" change to green");
         }
 		
 	public synchronized void changeYellow(String name){
-            
-			System.out.println(name+" change to yellow");
+            System.out.print(new SimpleDateFormat("mmss").format(new Date()) + " L " + name + " Y \n");
+//			System.out.println(name+" change to yellow");
 	}
 	
 	public synchronized void changeRed(String name){
              green = false;
-		System.out.println(name+" change to red");
+             System.out.print(new SimpleDateFormat("mmss").format(new Date()) + " L " + name + " R \n");
+//		System.out.println(name+" change to red");
                
                 notify();
 	}
