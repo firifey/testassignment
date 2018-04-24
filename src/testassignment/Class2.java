@@ -6,6 +6,7 @@
 package testassignment;
 
 import static java.lang.Thread.sleep;
+import java.sql.Timestamp;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,22 +25,18 @@ public class Class2 extends Thread{
 	
 	public void run(){
 		try {
-                    System.out.println(" EWL Change to yellow in 6 sec:");
+//                    System.out.print(new Timestamp(System.currentTimeMillis()) + " L EWL Y\n" );
+//                    System.out.println(" EWL Change to yellow in 6 sec:");
+			sleep(6000);
+                        trafficlight.changeYellow(threadname);
+                        
+//                        System.out.print(new Timestamp(System.currentTimeMillis()) + "L EWL R \n");
+//                        System.out.println("EWL Change to Red in 6 sec:");
 			sleep(6000);
 		} catch (InterruptedException ex) {
 			ex.printStackTrace();}
-            trafficlight.changeYellow(threadname);
-		try {
-                    System.out.println("EWL Change to Red in 6 sec:");
-			sleep(6000);
-		} catch (InterruptedException ex) {
-			ex.printStackTrace();}
-                trafficlight.changeRed(threadname);
-//		try {
-//                    System.out.println("Change to green in 2 sec:");
-//			sleep(2000);
-//		} catch (InterruptedException ex) {
-//			ex.printStackTrace();}
+                    trafficlight.changeRed(threadname);
+//		
         try {
             trafficlight.changeGreen(threadname);
         } catch (InterruptedException ex) {

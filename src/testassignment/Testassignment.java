@@ -1,23 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package testassignment;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 import java.util.Scanner;
-/**
- *
- * @author She
- */
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 public class Testassignment {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        
+    public static void main(String[] args) throws InterruptedException {
+        String readfile = null;
+        String [] huhu = new String[2];
         trafficlight haha = new trafficlight();
         int i = 0;
         int select=0;
@@ -26,15 +21,36 @@ public class Testassignment {
         thread1.setName("N");
         thread2.setName("EWL");
         
-        System.out.println(thread2.getName()+" is green");
-        System.out.println(thread1.getName()+" is red");
+//        System.out.println(new SimpleDateFormat("mmss").format(new Date())+ " L " + thread2.getName()+" G");
+//        System.out.println(new SimpleDateFormat("mmss").format(new Date())+ " L " + thread1.getName()+" R");
         
         thread1.setPriority(10);
         thread2.setPriority(1);
         
+        try{
+            Scanner inputStream = new Scanner(new FileInputStream("input.txt"));
+                    while(inputStream.hasNextLine()){
+                    readfile=inputStream.nextLine();
+                    huhu[i] = readfile;
+                        System.out.println(huhu[i]);
+                    i++;
+                    }
+                    inputStream.close();
+        }catch(FileNotFoundException e){
+            System.out.println("File was not found");
+        }
+        
+         System.out.println(new SimpleDateFormat("mmss").format(new Date())+ " L " + thread2.getName()+" G");
+        System.out.println(new SimpleDateFormat("mmss").format(new Date())+ " L " + thread1.getName()+" R");
+
+//for(int k=0;k<huhu.length;k++){        
+  // if (readfile.equals("N")){
+    //    thread1 = new Class1(haha,"N");
         thread1.start();
+      //  thread2 = new Class2(haha,"EWL");
         thread2.start();
-   
+        
+}
         
 ////	while(i<2)
 ////             select = new Random().nextInt(2);
@@ -49,5 +65,5 @@ public class Testassignment {
 //			break;
     }
     
-}
+
 
